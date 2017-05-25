@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Gmnotes</string>
+    <string name="action_settings">Settings</string>
+    <string name="menu_home">Ana Sayfa</string>
+    <string name="menu_about">Hakkında</string>
+    <string name="menu_exit">Çıkış</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="note">Note</string>
+    <string name="save">Save</string>
+    <string name="note_success">Note is created</string>
+    <string name="title">Title</string>
+</resources>
