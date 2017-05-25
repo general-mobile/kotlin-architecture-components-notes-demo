@@ -6,6 +6,10 @@
 
 This application is example of [Android Architecture Components](https://developer.android.com/topic/libraries/architecture/index.html) which implements MVVM Pattern.
 
+## Screenshots
+![AppScreenshot](art/screenshot.png)
+
+
 ## Libraries
 - [Dagger 2](http://google.github.io/dagger/)
 
