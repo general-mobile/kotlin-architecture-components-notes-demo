@@ -6,10 +6,9 @@ import android.view.View
 import android.widget.Toast
 import com.generalmobile.app.gmnotes.R
 import com.generalmobile.app.gmnotes.core.BaseActivity
-import com.generalmobile.app.gmnotes.core.OnItemClickListener
 import com.generalmobile.app.gmnotes.databinding.ActivityNewNoteBinding
 
-class NewNoteActivity : BaseActivity(), OnItemClickListener {
+class NewNoteActivity : BaseActivity(), (View) -> Unit {
 
     lateinit var binding: ActivityNewNoteBinding
 
@@ -23,7 +22,7 @@ class NewNoteActivity : BaseActivity(), OnItemClickListener {
 
     }
 
-    override fun onItemClick(view: View) {
+    override fun invoke(view: View) {
         Toast.makeText(this, getString(R.string.note_success), Toast.LENGTH_SHORT).show()
         finish()
     }
