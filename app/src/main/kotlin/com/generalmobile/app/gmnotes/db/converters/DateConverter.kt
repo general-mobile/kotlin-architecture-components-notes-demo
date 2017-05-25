@@ -10,8 +10,7 @@ class DateConverter {
         return if (value == null) null else Date(value)
     }
 
-    @TypeConverter
     fun dateToTimestamp(date: Date?): Long {
-        return (if (date == null) null else date!!.getTime())!!.toLong()
+        return date?.time ?: 0L
     }
 }
