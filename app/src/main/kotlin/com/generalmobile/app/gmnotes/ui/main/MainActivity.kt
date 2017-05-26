@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.widget.StaggeredGridLayoutManager
+import com.generalmobile.app.gmnotes.Application
 import com.generalmobile.app.gmnotes.R
 import com.generalmobile.app.gmnotes.core.BaseActivity
 import com.generalmobile.app.gmnotes.databinding.ActivityMainBinding
@@ -13,7 +14,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
 
-    var adapter: NoteAdapter = NoteAdapter(emptyList())
+    lateinit var adapter: NoteAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +24,7 @@ class MainActivity : BaseActivity() {
     private fun init() {
 
         val noteViewModel = ViewModelProviders.of(this).get(NoteViewModel::class.java)
+        adapter = NoteAdapter(emptyList(), application as Application)
 
         noteViewModel.getNotes().observe(this, Observer {
             if (it != null)

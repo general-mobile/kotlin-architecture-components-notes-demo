@@ -1,27 +1,24 @@
 package com.generalmobile.app.gmnotes.ui.main
 
+import android.app.Application
+import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
-import android.content.Context
 import android.content.Intent
-import android.view.View
-import com.generalmobile.app.gmnotes.Application
 import com.generalmobile.app.gmnotes.db.AppDatabase
 import com.generalmobile.app.gmnotes.db.entities.Note
 import com.generalmobile.app.gmnotes.ui.newnote.NewNoteActivity
 import javax.inject.Inject
 
-class NoteViewModel : ViewModel() {
+class NoteViewModel(val app: Application) : AndroidViewModel(app) {
     private var notes: LiveData<List<Note>>? = null
 
     @Inject
     lateinit var db: AppDatabase
-    @Inject
-    lateinit var context: Context
 
     init {
-        Application.component?.inject(this)
+        if (app is com.generalmobile.app.gmnotes.Application)
+            app.component.inject(this)
     }
 
     fun getNotes(): LiveData<List<Note>> {
@@ -37,8 +34,8 @@ class NoteViewModel : ViewModel() {
         notes = db.noteDao().getNotes()
     }
 
-    fun fabClick(view: View) {
-        context.startActivity(Intent(context, NewNoteActivity::class.java))
+    fun fabClick() {
+        app.startActivity(Intent(app, NewNoteActivity::class.java))
     }
 
 }

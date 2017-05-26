@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:backgroundTint="@color/colorAccent"
-            android:onClick="@{model::insert}"
+            android:onClick="@{() -> model.insert()}"
             android:text="@string/save" />
 
     </LinearLayout>

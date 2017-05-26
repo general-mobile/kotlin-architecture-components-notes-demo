@@ -2,13 +2,13 @@ package com.generalmobile.app.gmnotes.ui.newnote
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
+import com.generalmobile.app.gmnotes.Application
 import com.generalmobile.app.gmnotes.R
 import com.generalmobile.app.gmnotes.core.BaseActivity
 import com.generalmobile.app.gmnotes.databinding.ActivityNewNoteBinding
 
-class NewNoteActivity : BaseActivity(), (View) -> Unit {
+class NewNoteActivity : BaseActivity(), () -> Unit {
 
     lateinit var binding: ActivityNewNoteBinding
 
@@ -18,11 +18,11 @@ class NewNoteActivity : BaseActivity(), (View) -> Unit {
         var noteId = -1L
         if (intent != null && intent.extras != null)
             noteId = intent.extras.getLong("noteId", -1)
-        binding.model = NewNoteViewModel(this, noteId)
+        binding.model = NewNoteViewModel(this, noteId, application as Application)
 
     }
 
-    override fun invoke(view: View) {
+    override fun invoke() {
         Toast.makeText(this, getString(R.string.note_success), Toast.LENGTH_SHORT).show()
         finish()
     }
