@@ -11,7 +11,7 @@ import java.util.*
 class NoteAdapterViewModel(var application: Application, var note: Note) : AndroidViewModel(application) {
 
     var currentDateFormat = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
-    var pastDateFormat = SimpleDateFormat("dd:MM:yyyy", Locale.getDefault())
+    var pastDateFormat = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
 
     fun getNoteTitle() = note.title
 
