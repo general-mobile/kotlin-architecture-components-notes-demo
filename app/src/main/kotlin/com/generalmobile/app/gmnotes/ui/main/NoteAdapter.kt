@@ -13,9 +13,8 @@ class NoteAdapter(private var noteList: List<Note>, var application: Application
     override fun getItemCount() = noteList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val binding = holder.binding
-        binding.viewModel.note = noteList[position]
-        binding.executePendingBindings()
+        holder.binding.viewModel.note = noteList[position]
+        holder.binding.executePendingBindings()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
