@@ -11,7 +11,7 @@ class DateConverter {
     }
 
     @TypeConverter
-    fun dateToTimestamp(date: Date?): Long {
-        return date?.time ?: 0L
+    fun dateToTimestamp(date: Date?): Long? {
+        return date?.time
     }
 }
