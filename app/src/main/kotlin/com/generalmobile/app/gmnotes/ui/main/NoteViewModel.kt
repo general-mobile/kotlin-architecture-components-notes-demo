@@ -17,8 +17,7 @@ class NoteViewModel(val app: Application) : AndroidViewModel(app) {
     lateinit var db: AppDatabase
 
     init {
-        if (app is com.generalmobile.app.gmnotes.Application)
-            app.component.inject(this)
+        (app as? com.generalmobile.app.gmnotes.Application)?.component?.inject(this)
     }
 
     fun getNotes(): LiveData<List<Note>> {

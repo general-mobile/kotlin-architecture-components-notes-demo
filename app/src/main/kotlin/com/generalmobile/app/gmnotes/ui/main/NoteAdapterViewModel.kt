@@ -8,10 +8,11 @@ import com.generalmobile.app.gmnotes.ui.newnote.NewNoteActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
-class NoteAdapterViewModel(var application: Application, var note: Note) : AndroidViewModel(application) {
+class NoteAdapterViewModel(var application: Application) : AndroidViewModel(application) {
 
     var currentDateFormat = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
     var pastDateFormat = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
+    lateinit var note: Note
 
     fun getNoteTitle() = note.title
 
@@ -26,7 +27,7 @@ class NoteAdapterViewModel(var application: Application, var note: Note) : Andro
     }
 
     fun onClick() {
-        var intent = Intent(application, NewNoteActivity::class.java)
+        val intent = Intent(application, NewNoteActivity::class.java)
         intent.putExtra("noteId", note.id)
         application.startActivity(intent)
     }
