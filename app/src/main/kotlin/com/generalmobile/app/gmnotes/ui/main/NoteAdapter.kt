@@ -14,13 +14,14 @@ class NoteAdapter(private var noteList: List<Note>, var application: Application
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val binding = holder.binding
-        val viewModel = NoteAdapterViewModel(application, noteList[position])
-        binding.viewModel = viewModel
+        binding.viewModel.note = noteList[position]
+        binding.executePendingBindings()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val postBinding = DataBindingUtil.inflate<ItemNoteBinding>(LayoutInflater.from(parent.context), R.layout.item_note, parent, false)
-
+        val viewModel = NoteAdapterViewModel(application)
+        postBinding.viewModel = viewModel
         return ViewHolder(postBinding)
     }
 
