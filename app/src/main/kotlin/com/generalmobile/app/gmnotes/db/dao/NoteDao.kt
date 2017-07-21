@@ -11,7 +11,7 @@ interface NoteDao {
     @Query("SELECT * FROM Note order by createDate desc")
     fun getNotes(): LiveData<List<Note>>
 
-    @Query("SELECT * FROM Note where id = :p0")
+    @Query("SELECT * FROM Note where id = :noteId")
     fun getNote(noteId: Long): Note
 
     @Insert(onConflict = REPLACE)
